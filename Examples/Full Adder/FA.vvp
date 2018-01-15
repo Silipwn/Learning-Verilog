@@ -1,0 +1,156 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xcfcd30 .scope module, "FA_Stimulus" "FA_Stimulus" 2 1;
+ .timescale 0 0;
+v0xd283f0_0 .var "A", 3 0;
+v0xd28470_0 .var "B", 3 0;
+v0xd284f0_0 .var "C_IN", 0 0;
+v0xd285c0_0 .net "C_OUT", 0 0, L_0xd29e70; 1 drivers
+RS_0x7f79925415e8 .resolv tri, L_0xd28b80, L_0xd29250, L_0xd29830, L_0xd29f20;
+v0xd28690_0 .net8 "SUM", 3 0, RS_0x7f79925415e8; 4 drivers
+S_0xcfc170 .scope module, "fa1" "fulladd" 2 8, 3 2, S_0xcfcd30;
+ .timescale 0 0;
+v0xd27e50_0 .net "a", 3 0, v0xd283f0_0; 1 drivers
+v0xd27f10_0 .net "b", 3 0, v0xd28470_0; 1 drivers
+v0xd27fb0_0 .net "c1", 0 0, L_0xd28ad0; 1 drivers
+v0xd28080_0 .net "c2", 0 0, L_0xd291a0; 1 drivers
+v0xd28150_0 .net "c3", 0 0, L_0xd29780; 1 drivers
+v0xd28220_0 .net "c_in", 0 0, v0xd284f0_0; 1 drivers
+v0xd282a0_0 .alias "c_out", 0 0, v0xd285c0_0;
+v0xd28320_0 .alias "sum", 3 0, v0xd28690_0;
+L_0xd28b80 .part/pv L_0xd28930, 0, 1, 4;
+L_0xd28cc0 .part v0xd283f0_0, 0, 1;
+L_0xd28db0 .part v0xd28470_0, 0, 1;
+L_0xd29250 .part/pv L_0xd29000, 1, 1, 4;
+L_0xd29340 .part v0xd283f0_0, 1, 1;
+L_0xd293e0 .part v0xd28470_0, 1, 1;
+L_0xd29830 .part/pv L_0xd295e0, 2, 1, 4;
+L_0xd29960 .part v0xd283f0_0, 2, 1;
+L_0xd29a90 .part v0xd28470_0, 2, 1;
+L_0xd29f20 .part/pv L_0xd29cd0, 3, 1, 4;
+L_0xd2a070 .part v0xd283f0_0, 3, 1;
+L_0xd2a110 .part v0xd28470_0, 3, 1;
+S_0xd27820 .scope module, "A0" "adder" 3 12, 4 1, S_0xcfc170;
+ .timescale 0 0;
+L_0xd28710 .functor XOR 1, L_0xd28cc0, L_0xd28db0, C4<0>, C4<0>;
+L_0xd28800 .functor AND 1, L_0xd28cc0, L_0xd28db0, C4<1>, C4<1>;
+L_0xd28930 .functor XOR 1, L_0xd28710, v0xd284f0_0, C4<0>, C4<0>;
+L_0xd289e0 .functor AND 1, L_0xd28710, v0xd284f0_0, C4<1>, C4<1>;
+L_0xd28ad0 .functor XOR 1, L_0xd289e0, L_0xd28800, C4<0>, C4<0>;
+v0xd27910_0 .net "a", 0 0, L_0xd28cc0; 1 drivers
+v0xd279d0_0 .net "b", 0 0, L_0xd28db0; 1 drivers
+v0xd27a70_0 .net "c1", 0 0, L_0xd28800; 1 drivers
+v0xd27b10_0 .alias "c_in", 0 0, v0xd28220_0;
+v0xd27b90_0 .alias "c_out", 0 0, v0xd27fb0_0;
+v0xd27c40_0 .net "s1", 0 0, L_0xd28710; 1 drivers
+v0xd27cc0_0 .net "s2", 0 0, L_0xd289e0; 1 drivers
+v0xd27d60_0 .net "sum", 0 0, L_0xd28930; 1 drivers
+S_0xd271f0 .scope module, "A1" "adder" 3 13, 4 1, S_0xcfc170;
+ .timescale 0 0;
+L_0xd28ea0 .functor XOR 1, L_0xd29340, L_0xd293e0, C4<0>, C4<0>;
+L_0xd28f00 .functor AND 1, L_0xd29340, L_0xd293e0, C4<1>, C4<1>;
+L_0xd29000 .functor XOR 1, L_0xd28ea0, L_0xd28ad0, C4<0>, C4<0>;
+L_0xd29140 .functor AND 1, L_0xd28ea0, L_0xd28ad0, C4<1>, C4<1>;
+L_0xd291a0 .functor XOR 1, L_0xd29140, L_0xd28f00, C4<0>, C4<0>;
+v0xd272e0_0 .net "a", 0 0, L_0xd29340; 1 drivers
+v0xd273a0_0 .net "b", 0 0, L_0xd293e0; 1 drivers
+v0xd27440_0 .net "c1", 0 0, L_0xd28f00; 1 drivers
+v0xd274e0_0 .alias "c_in", 0 0, v0xd27fb0_0;
+v0xd27560_0 .alias "c_out", 0 0, v0xd28080_0;
+v0xd27610_0 .net "s1", 0 0, L_0xd28ea0; 1 drivers
+v0xd27690_0 .net "s2", 0 0, L_0xd29140; 1 drivers
+v0xd27730_0 .net "sum", 0 0, L_0xd29000; 1 drivers
+S_0xd26bc0 .scope module, "A2" "adder" 3 14, 4 1, S_0xcfc170;
+ .timescale 0 0;
+L_0xd29480 .functor XOR 1, L_0xd29960, L_0xd29a90, C4<0>, C4<0>;
+L_0xd294e0 .functor AND 1, L_0xd29960, L_0xd29a90, C4<1>, C4<1>;
+L_0xd295e0 .functor XOR 1, L_0xd29480, L_0xd291a0, C4<0>, C4<0>;
+L_0xd29720 .functor AND 1, L_0xd29480, L_0xd291a0, C4<1>, C4<1>;
+L_0xd29780 .functor XOR 1, L_0xd29720, L_0xd294e0, C4<0>, C4<0>;
+v0xd26cb0_0 .net "a", 0 0, L_0xd29960; 1 drivers
+v0xd26d70_0 .net "b", 0 0, L_0xd29a90; 1 drivers
+v0xd26e10_0 .net "c1", 0 0, L_0xd294e0; 1 drivers
+v0xd26eb0_0 .alias "c_in", 0 0, v0xd28080_0;
+v0xd26f30_0 .alias "c_out", 0 0, v0xd28150_0;
+v0xd26fe0_0 .net "s1", 0 0, L_0xd29480; 1 drivers
+v0xd27060_0 .net "s2", 0 0, L_0xd29720; 1 drivers
+v0xd27100_0 .net "sum", 0 0, L_0xd295e0; 1 drivers
+S_0xcfec10 .scope module, "A3" "adder" 3 15, 4 1, S_0xcfc170;
+ .timescale 0 0;
+L_0xd29bc0 .functor XOR 1, L_0xd2a070, L_0xd2a110, C4<0>, C4<0>;
+L_0xd29c20 .functor AND 1, L_0xd2a070, L_0xd2a110, C4<1>, C4<1>;
+L_0xd29cd0 .functor XOR 1, L_0xd29bc0, L_0xd29780, C4<0>, C4<0>;
+L_0xd29e10 .functor AND 1, L_0xd29bc0, L_0xd29780, C4<1>, C4<1>;
+L_0xd29e70 .functor XOR 1, L_0xd29e10, L_0xd29c20, C4<0>, C4<0>;
+v0xcfc660_0 .net "a", 0 0, L_0xd2a070; 1 drivers
+v0xd266c0_0 .net "b", 0 0, L_0xd2a110; 1 drivers
+v0xd26760_0 .net "c1", 0 0, L_0xd29c20; 1 drivers
+v0xd26800_0 .alias "c_in", 0 0, v0xd28150_0;
+v0xd268b0_0 .alias "c_out", 0 0, v0xd285c0_0;
+v0xd26950_0 .net "s1", 0 0, L_0xd29bc0; 1 drivers
+v0xd26a30_0 .net "s2", 0 0, L_0xd29e10; 1 drivers
+v0xd26ad0_0 .net "sum", 0 0, L_0xd29cd0; 1 drivers
+    .scope S_0xcfcd30;
+T_0 ;
+    %vpi_call 2 13 "$monitor", $time, "A=%d,B=%d,C_IN= %d ----> C_OUT= %b,SUM= %d\012", v0xd283f0_0, v0xd28470_0, v0xd284f0_0, v0xd285c0_0, v0xd28690_0;
+    %end;
+    .thread T_0;
+    .scope S_0xcfcd30;
+T_1 ;
+    %set/v v0xd283f0_0, 0, 4;
+    %set/v v0xd28470_0, 0, 4;
+    %set/v v0xd284f0_0, 0, 1;
+    %delay 5, 0;
+    %movi 8, 3, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 10, 0;
+    %movi 8, 3, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 2, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 10, 0;
+    %movi 8, 4, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 1, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %set/v v0xd284f0_0, 1, 1;
+    %delay 5, 0;
+    %movi 8, 2, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 10, 0;
+    %movi 8, 4, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 1, 4;
+    %set/v v0xd283f0_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v0xd28470_0, 8, 4;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "FCA_tb.v";
+    "FA.v";
+    "One_bit.v";
